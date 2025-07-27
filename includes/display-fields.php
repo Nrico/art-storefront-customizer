@@ -10,6 +10,10 @@ if (!defined('ABSPATH')) {
  * product price. Only values that exist will be shown.
  */
 function asc_output_artwork_details() {
+    if (!class_exists('WC_Product')) {
+        return;
+    }
+
     global $product;
 
     if (!$product instanceof WC_Product) {

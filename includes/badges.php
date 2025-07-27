@@ -7,6 +7,10 @@ if (!defined('ABSPATH')) {
  * Display custom badges below the product price on single product pages.
  */
 function asc_display_product_badges() {
+    if (!class_exists('WC_Product')) {
+        return;
+    }
+
     global $product;
 
     if (!$product instanceof WC_Product) {

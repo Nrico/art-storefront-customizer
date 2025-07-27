@@ -14,17 +14,40 @@ if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly.
 }
 
-require_once plugin_dir_path(__FILE__) . 'includes/meta-boxes.php';
-require_once plugin_dir_path(__FILE__) . 'includes/display-fields.php';
-require_once plugin_dir_path(__FILE__) . 'includes/taxonomies.php';
-require_once plugin_dir_path(__FILE__) . 'includes/badges.php';
 require_once plugin_dir_path(__FILE__) . 'includes/artist-profile.php';
-require_once plugin_dir_path(__FILE__) . 'includes/admin-tools.php';
 require_once plugin_dir_path(__FILE__) . 'includes/settings-page.php';
-require_once plugin_dir_path(__FILE__) . 'includes/language-overrides.php';
-require_once plugin_dir_path(__FILE__) . 'includes/template-overrides.php';
-require_once plugin_dir_path(__FILE__) . 'includes/availability.php';
 require_once plugin_dir_path(__FILE__) . 'uninstall.php';
+
+/**
+ * Load plugin textdomain for translations.
+ */
+function asc_load_textdomain() {
+    load_plugin_textdomain(
+        'art-storefront-customizer',
+        false,
+        dirname(plugin_basename(__FILE__)) . '/languages'
+    );
+}
+add_action('init', 'asc_load_textdomain');
+
+/**
+ * Include WooCommerce dependent functionality when WooCommerce is active.
+ */
+function asc_include_woocommerce_features() {
+    if (!class_exists('WooCommerce')) {
+        return;
+    }
+
+    require_once plugin_dir_path(__FILE__) . 'includes/meta-boxes.php';
+    require_once plugin_dir_path(__FILE__) . 'includes/display-fields.php';
+    require_once plugin_dir_path(__FILE__) . 'includes/taxonomies.php';
+    require_once plugin_dir_path(__FILE__) . 'includes/badges.php';
+    require_once plugin_dir_path(__FILE__) . 'includes/admin-tools.php';
+    require_once plugin_dir_path(__FILE__) . 'includes/language-overrides.php';
+    require_once plugin_dir_path(__FILE__) . 'includes/template-overrides.php';
+    require_once plugin_dir_path(__FILE__) . 'includes/availability.php';
+}
+add_action('plugins_loaded', 'asc_include_woocommerce_features');
 
 register_uninstall_hook(__FILE__, 'asc_customizer_uninstall');
 
