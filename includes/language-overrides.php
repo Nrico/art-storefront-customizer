@@ -13,13 +13,13 @@ function asc_override_woocommerce_labels($translated_text, $text, $domain) {
         $settings = get_option('asc_settings');
 
         // Custom "Add to cart" replacement
-        if ($text === 'Add to cart' && !empty($settings['cart_label'])) {
-            return esc_html($settings['cart_label']);
+        if ($text === 'Add to cart' && !empty($settings['add_to_cart_label'])) {
+            return esc_html($settings['add_to_cart_label']);
         }
 
         // Custom "Out of stock" replacement
-        if ($text === 'Out of stock' && !empty($settings['sold_label'])) {
-            return esc_html($settings['sold_label']);
+        if ($text === 'Out of stock' && !empty($settings['out_of_stock_label'])) {
+            return esc_html($settings['out_of_stock_label']);
         }
     }
 
