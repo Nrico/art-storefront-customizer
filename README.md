@@ -8,3 +8,6 @@ The plugin adds an **Art Storefront** submenu under WordPress Settings. Here you
 - Out of Stock Label
 - Enable Framing Options
 - Enable Edition Print Fields
+
+## Artist Profiles
+Create artist profile posts with a short bio, location, and headshot. Products can be linked to an artist through the **Associated Artist** taxonomy and artist details will automatically display on single product pages.
