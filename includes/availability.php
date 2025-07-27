@@ -34,3 +34,20 @@ function asc_hide_unique_availability_text($text, $product) {
     return $text;
 }
 add_filter('woocommerce_get_availability_text', 'asc_hide_unique_availability_text', 10, 2);
+
+/**
+ * Replace the price HTML with a collected label when the product is out of stock.
+ *
+ * @param string     $price_html Price HTML.
+ * @param WC_Product $product    WooCommerce product.
+ * @return string Modified HTML.
+ */
+function asc_replace_out_of_stock_price_html($price_html, $product) {
+    if (!$product->is_in_stock()) {
+        $settings = asc_get_settings();
+        $label = !empty($settings['out_of_stock_label']) ? $settings['out_of_stock_label'] : __('Collected', 'art-storefront-customizer');
+        return '<span class="asc-collected">' . esc_html($label) . '</span>';
+    }
+    return $price_html;
+}
+add_filter('woocommerce_get_price_html', 'asc_replace_out_of_stock_price_html', 10, 2);
