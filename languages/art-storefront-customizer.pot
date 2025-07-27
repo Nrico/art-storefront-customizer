@@ -18,6 +18,10 @@ msgstr ""
 msgid "Collected 🟥"
 msgstr ""
 
+#: includes/badges.php
+msgid "🟥 Collected"
+msgstr ""
+
 #: placeholder
 msgid "Medium"
 msgstr ""
@@ -44,4 +48,16 @@ msgstr ""
 
 #: placeholder
 msgid "14-Day Satisfaction Guarantee"
+msgstr ""
+
+#: includes/badges.php
+msgid "✅ Certificate Included"
+msgstr ""
+
+#: includes/badges.php
+msgid "📦 Shipping Included"
+msgstr ""
+
+#: includes/badges.php
+msgid "💯 14-Day Satisfaction Guarantee"
 msgstr ""

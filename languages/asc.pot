@@ -104,3 +104,19 @@ msgstr ""
 #: includes/settings-page.php:70
 msgid "Art Storefront"
 msgstr ""
+
+#: includes/badges.php
+msgid "🟥 Collected"
+msgstr ""
+
+#: includes/badges.php
+msgid "✅ Certificate Included"
+msgstr ""
+
+#: includes/badges.php
+msgid "📦 Shipping Included"
+msgstr ""
+
+#: includes/badges.php
+msgid "💯 14-Day Satisfaction Guarantee"
+msgstr ""
