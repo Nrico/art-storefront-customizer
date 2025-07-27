@@ -20,3 +20,4 @@ require_once plugin_dir_path(__FILE__) . 'includes/artist-profile.php';
 require_once plugin_dir_path(__FILE__) . 'includes/admin-tools.php';
 require_once plugin_dir_path(__FILE__) . 'includes/settings-page.php';
 require_once plugin_dir_path(__FILE__) . 'includes/language-overrides.php';
+require_once plugin_dir_path(__FILE__) . 'includes/template-overrides.php';
