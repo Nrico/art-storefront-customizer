@@ -21,3 +21,15 @@ require_once plugin_dir_path(__FILE__) . 'includes/admin-tools.php';
 require_once plugin_dir_path(__FILE__) . 'includes/settings-page.php';
 require_once plugin_dir_path(__FILE__) . 'includes/language-overrides.php';
 require_once plugin_dir_path(__FILE__) . 'includes/template-overrides.php';
+
+/**
+ * Load plugin textdomain for translations.
+ */
+function asc_load_textdomain() {
+    load_plugin_textdomain(
+        'art-storefront-customizer',
+        false,
+        dirname(plugin_basename(__FILE__)) . '/languages'
+    );
+}
+add_action('init', 'asc_load_textdomain');
