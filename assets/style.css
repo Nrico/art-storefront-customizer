@@ -37,3 +37,8 @@ Theme Name: Art Storefront Customizer
     margin: 0.25em 0;
 }
 
+.asc-collected {
+    color: #cc0000;
+    font-weight: bold;
+}
+
