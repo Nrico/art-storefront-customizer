@@ -1,16 +1,57 @@
 <?php
-/*
-Plugin Name: Art Storefront Customizer
-Description: Customizes WooCommerce product availability for fine art sales. Replaces "Out of stock" with "Collected Work" and adds a red dot.
-Version: 1.1
-Author: El Trujillo
-License: GPL2
-*/
+/**
+ * Plugin Name: Art Storefront Customizer
+ * Description: Customizes WooCommerce product availability for fine art sales. Replaces "Out of stock" with "Collected Work" and adds a red dot.
+ * Version: 1.1
+ * Author: El Trujillo
+ * Author URI: https://eltrujillo.com
+ * License: GPLv2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ * Text Domain: art-storefront-customizer
+ * Domain Path: /languages
+ */
 
 // Prevent direct file access
 if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
+
+require_once plugin_dir_path( __FILE__ ) . 'includes/artist-profile.php';
+require_once plugin_dir_path( __FILE__ ) . 'includes/settings-page.php';
+require_once plugin_dir_path( __FILE__ ) . 'uninstall.php';
+
+/**
+ * Load plugin textdomain for translations.
+ */
+function asc_load_textdomain() {
+    load_plugin_textdomain(
+        'art-storefront-customizer',
+        false,
+        dirname( plugin_basename( __FILE__ ) ) . '/languages'
+    );
+}
+add_action( 'init', 'asc_load_textdomain' );
+
+/**
+ * Include WooCommerce dependent functionality when WooCommerce is active.
+ */
+function asc_include_woocommerce_features() {
+    if ( ! class_exists( 'WooCommerce' ) ) {
+        return;
+    }
+
+    require_once plugin_dir_path( __FILE__ ) . 'includes/meta-boxes.php';
+    require_once plugin_dir_path( __FILE__ ) . 'includes/display-fields.php';
+    require_once plugin_dir_path( __FILE__ ) . 'includes/taxonomies.php';
+    require_once plugin_dir_path( __FILE__ ) . 'includes/badges.php';
+    require_once plugin_dir_path( __FILE__ ) . 'includes/admin-tools.php';
+    require_once plugin_dir_path( __FILE__ ) . 'includes/language-overrides.php';
+    require_once plugin_dir_path( __FILE__ ) . 'includes/template-overrides.php';
+    require_once plugin_dir_path( __FILE__ ) . 'includes/availability.php';
+}
+add_action( 'plugins_loaded', 'asc_include_woocommerce_features' );
+
+register_uninstall_hook( __FILE__, 'asc_customizer_uninstall' );
 
 /**
  * Replace "Out of stock" text with "Collected Work" and add a red dot in WooCommerce
