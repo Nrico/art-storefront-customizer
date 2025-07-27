@@ -16,10 +16,10 @@ global $product;
 
 <section class="product-summary">
     <h1 class="product_title entry-title"><?php the_title(); ?></h1>
+    <?php do_action( 'art_storefront_product_badges' ); ?>
     <div class="product-price">
         <?php wc_get_template( 'single-product/price.php' ); ?>
     </div>
-    <?php do_action( 'art_storefront_product_badges' ); ?>
 </section>
 
 <section class="product-main columns-2">
@@ -62,6 +62,29 @@ global $product;
         <?php endif; ?>
         <?php if ( $rarity = get_post_meta( get_the_ID(), '_asc_rarity', true ) ) : ?>
             <li><strong>Rarity:</strong> <?php echo esc_html( $rarity ); ?></li>
+        <?php endif; ?>
+        <?php
+        $edition_no   = get_post_meta( get_the_ID(), '_asc_edition_number', true );
+        $edition_size = get_post_meta( get_the_ID(), '_asc_edition_size', true );
+        $show_edition = $edition_no || $edition_size || $rarity === 'open-edition' || $rarity === 'limited-edition';
+        if ( $show_edition ) :
+            $parts = array();
+            if ( $edition_no && $edition_size ) {
+                $parts[] = $edition_no . ' / ' . $edition_size;
+            } elseif ( $edition_no ) {
+                $parts[] = $edition_no;
+            } elseif ( $edition_size ) {
+                $parts[] = __( 'of', 'art-storefront-customizer' ) . ' ' . $edition_size;
+            }
+            if ( $rarity === 'open-edition' ) {
+                $parts[] = __( 'Open Edition', 'art-storefront-customizer' );
+            } elseif ( $rarity === 'limited-edition' && empty( $edition_no ) && empty( $edition_size ) ) {
+                $parts[] = __( 'Closed Edition', 'art-storefront-customizer' );
+            } elseif ( $rarity === 'limited-edition' ) {
+                $parts[] = __( 'Closed Edition', 'art-storefront-customizer' );
+            }
+            ?>
+            <li><strong><?php esc_html_e( 'Edition', 'art-storefront-customizer' ); ?>:</strong> <?php echo esc_html( implode( ' ', $parts ) ); ?></li>
         <?php endif; ?>
         <?php if ( $framed = get_post_meta( get_the_ID(), '_asc_framed', true ) ) : ?>
             <li><strong>Framed:</strong> <?php echo esc_html( $framed ); ?></li>

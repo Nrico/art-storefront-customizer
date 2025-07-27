@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Art Storefront Customizer
  * Description: Artist-friendly customizations for WooCommerce.
- * Version: 0.1.0
+ * Version: 0.1.1
  * Author: El Trujillo
  * Author URI: https://eltrujillo.com
  * License: GPLv2 or later
@@ -23,6 +23,7 @@ require_once plugin_dir_path(__FILE__) . 'includes/admin-tools.php';
 require_once plugin_dir_path(__FILE__) . 'includes/settings-page.php';
 require_once plugin_dir_path(__FILE__) . 'includes/language-overrides.php';
 require_once plugin_dir_path(__FILE__) . 'includes/template-overrides.php';
+require_once plugin_dir_path(__FILE__) . 'includes/availability.php';
 require_once plugin_dir_path(__FILE__) . 'uninstall.php';
 
 register_uninstall_hook(__FILE__, 'asc_customizer_uninstall');

@@ -57,8 +57,25 @@ function asc_output_artwork_details() {
     if ($shipping) {
         $items[] = sprintf('<li><strong>%s:</strong> %s</li>', esc_html__('Shipping Format', 'art-storefront-customizer'), esc_html($shipping));
     }
-    if (!empty($settings['enable_edition_print_fields']) && ($edition_no || $edition_sz)) {
-        $value = trim($edition_no . ($edition_sz ? ' / ' . $edition_sz : ''));
+    if (!empty($settings['enable_edition_print_fields']) && ($edition_no || $edition_sz || $rarity === 'open-edition' || $rarity === 'limited-edition')) {
+        $parts = array();
+        if ($edition_no && $edition_sz) {
+            $parts[] = $edition_no . ' / ' . $edition_sz;
+        } elseif ($edition_no) {
+            $parts[] = $edition_no;
+        } elseif ($edition_sz) {
+            $parts[] = __('of', 'art-storefront-customizer') . ' ' . $edition_sz;
+        }
+
+        if ($rarity === 'open-edition') {
+            $parts[] = __('Open Edition', 'art-storefront-customizer');
+        } elseif ($rarity === 'limited-edition' && empty($edition_no) && empty($edition_sz)) {
+            $parts[] = __('Closed Edition', 'art-storefront-customizer');
+        } elseif ($rarity === 'limited-edition') {
+            $parts[] = __('Closed Edition', 'art-storefront-customizer');
+        }
+
+        $value = implode(' ', $parts);
         $items[] = sprintf('<li><strong>%s:</strong> %s</li>', esc_html__('Edition', 'art-storefront-customizer'), esc_html($value));
     }
 
