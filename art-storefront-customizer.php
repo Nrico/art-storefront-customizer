@@ -33,3 +33,14 @@ function asc_load_textdomain() {
     );
 }
 add_action('init', 'asc_load_textdomain');
+
+/**
+ * Enqueue plugin styles.
+ */
+function asc_enqueue_styles() {
+    wp_enqueue_style(
+        'art-storefront-customizer',
+        plugins_url('assets/style.css', __FILE__)
+    );
+}
+add_action('wp_enqueue_scripts', 'asc_enqueue_styles');
