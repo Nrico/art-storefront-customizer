@@ -3,15 +3,21 @@
  * Uninstall routines for the Art Storefront Customizer plugin.
  */
 
-// Exit if accessed directly or uninstall not called from WordPress.
-if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
-    exit;
-}
+
+// This file is included by the main plugin during normal execution.
+// We can't bail out early if `WP_UNINSTALL_PLUGIN` is undefined,
+// otherwise the plugin would stop loading. Instead, the uninstall
+// routine itself checks for the constant before running.
 
 /**
  * Delete all post meta for each custom key.
  */
 function asc_customizer_uninstall() {
+    // Only run when WordPress is actually uninstalling the plugin.
+    if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
+        return;
+    }
+
     // Delete plugin options.
     delete_option( 'asc_settings' );
 
