@@ -34,32 +34,32 @@ function asc_output_artwork_details() {
     $items = array();
 
     if ($medium) {
-        $items[] = sprintf('<li><strong>%s:</strong> %s</li>', esc_html__('Medium', 'art-storefront-customizer'), esc_html($medium));
+        $items[] = sprintf('<li><strong>%s:</strong> %s</li>', esc_html__('Medium', 'art-storefront-customizer-main'), esc_html($medium));
     }
     if ($year) {
-        $items[] = sprintf('<li><strong>%s:</strong> %s</li>', esc_html__('Year Created', 'art-storefront-customizer'), esc_html($year));
+        $items[] = sprintf('<li><strong>%s:</strong> %s</li>', esc_html__('Year Created', 'art-storefront-customizer-main'), esc_html($year));
     }
     if ($dimensions) {
-        $items[] = sprintf('<li><strong>%s:</strong> %s</li>', esc_html__('Dimensions', 'art-storefront-customizer'), esc_html($dimensions));
+        $items[] = sprintf('<li><strong>%s:</strong> %s</li>', esc_html__('Dimensions', 'art-storefront-customizer-main'), esc_html($dimensions));
     }
     if ($rarity) {
-        $items[] = sprintf('<li><strong>%s:</strong> %s</li>', esc_html__('Rarity', 'art-storefront-customizer'), esc_html($rarity));
+        $items[] = sprintf('<li><strong>%s:</strong> %s</li>', esc_html__('Rarity', 'art-storefront-customizer-main'), esc_html($rarity));
     }
     if ($framed) {
-        $items[] = sprintf('<li><strong>%s:</strong> %s</li>', esc_html__('Framed', 'art-storefront-customizer'), esc_html($framed));
+        $items[] = sprintf('<li><strong>%s:</strong> %s</li>', esc_html__('Framed', 'art-storefront-customizer-main'), esc_html($framed));
     }
     if (!empty($settings['enable_framing_options']) && $frame) {
-        $items[] = sprintf('<li><strong>%s:</strong> %s</li>', esc_html__('Frame Option', 'art-storefront-customizer'), esc_html($frame));
+        $items[] = sprintf('<li><strong>%s:</strong> %s</li>', esc_html__('Frame Option', 'art-storefront-customizer-main'), esc_html($frame));
     }
     if ($coa) {
-        $items[] = sprintf('<li><strong>%s:</strong> %s</li>', esc_html__('Certificate of Authenticity', 'art-storefront-customizer'), esc_html__('Included', 'art-storefront-customizer'));
+        $items[] = sprintf('<li><strong>%s:</strong> %s</li>', esc_html__('Certificate of Authenticity', 'art-storefront-customizer-main'), esc_html__('Included', 'art-storefront-customizer-main'));
     }
     if ($shipping) {
-        $items[] = sprintf('<li><strong>%s:</strong> %s</li>', esc_html__('Shipping Format', 'art-storefront-customizer'), esc_html($shipping));
+        $items[] = sprintf('<li><strong>%s:</strong> %s</li>', esc_html__('Shipping Format', 'art-storefront-customizer-main'), esc_html($shipping));
     }
     if (!empty($settings['enable_edition_print_fields']) && ($edition_no || $edition_sz)) {
         $value = trim($edition_no . ($edition_sz ? ' / ' . $edition_sz : ''));
-        $items[] = sprintf('<li><strong>%s:</strong> %s</li>', esc_html__('Edition', 'art-storefront-customizer'), esc_html($value));
+        $items[] = sprintf('<li><strong>%s:</strong> %s</li>', esc_html__('Edition', 'art-storefront-customizer-main'), esc_html($value));
     }
 
     if (!empty($items)) {

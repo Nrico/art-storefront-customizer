@@ -4,9 +4,10 @@
  * Description: Artist-friendly customizations for WooCommerce.
  * Version: 0.1.0
  * Author: Your Name
- * Text Domain: art-storefront-customizer
+ * License: GPLv2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ * Text Domain: art-storefront-customizer-main
  * Domain Path: /languages
- */
 
 if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly.
@@ -25,25 +26,16 @@ require_once plugin_dir_path(__FILE__) . 'uninstall.php';
 
 register_uninstall_hook(__FILE__, 'asc_customizer_uninstall');
 
-/**
- * Load plugin textdomain for translations.
- */
-function asc_load_textdomain() {
-    load_plugin_textdomain(
-        'art-storefront-customizer',
-        false,
-        dirname(plugin_basename(__FILE__)) . '/languages'
-    );
-}
-add_action('init', 'asc_load_textdomain');
 
 /**
  * Enqueue plugin styles.
  */
 function asc_enqueue_styles() {
     wp_enqueue_style(
-        'art-storefront-customizer',
-        plugins_url('assets/style.css', __FILE__)
+        'art-storefront-customizer-main',
+        plugins_url('assets/style.css', __FILE__),
+        array(),
+        '0.1.0'
     );
 }
 add_action('wp_enqueue_scripts', 'asc_enqueue_styles');
