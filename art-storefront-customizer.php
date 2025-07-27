@@ -6,7 +6,7 @@
  * Author: Your Name
  * License: GPLv2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain: art-storefront-customizer-main
+ * Text Domain: art-storefront-customizer
  * Domain Path: /languages
 
 if (!defined('ABSPATH')) {
@@ -32,7 +32,7 @@ register_uninstall_hook(__FILE__, 'asc_customizer_uninstall');
  */
 function asc_enqueue_styles() {
     wp_enqueue_style(
-        'art-storefront-customizer-main',
+        'art-storefront-customizer',
         plugins_url('assets/style.css', __FILE__),
         array(),
         '0.1.0'

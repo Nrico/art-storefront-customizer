@@ -8,8 +8,8 @@ if (!defined('ABSPATH')) {
  */
 function asc_admin_tools_menu() {
     add_management_page(
-        __('Art Storefront Utilities', 'art-storefront-customizer-main'),
-        __('Art Storefront Utilities', 'art-storefront-customizer-main'),
+        __('Art Storefront Utilities', 'art-storefront-customizer'),
+        __('Art Storefront Utilities', 'art-storefront-customizer'),
         'manage_options',
         'asc_admin_tools',
         'asc_render_admin_tools_page'
@@ -44,7 +44,7 @@ function asc_render_admin_tools_page() {
             }
         }
 
-        echo '<div class="updated"><p>' . esc_html__('Artwork updated.', 'art-storefront-customizer-main') . '</p></div>';
+        echo '<div class="updated"><p>' . esc_html__('Artwork updated.', 'art-storefront-customizer') . '</p></div>';
     }
 
     $products = get_posts(array(
@@ -57,31 +57,31 @@ function asc_render_admin_tools_page() {
 
     ?>
     <div class="wrap">
-        <h1><?php esc_html_e('Art Storefront Utilities', 'art-storefront-customizer-main'); ?></h1>
+        <h1><?php esc_html_e('Art Storefront Utilities', 'art-storefront-customizer'); ?></h1>
         <form method="post">
             <?php wp_nonce_field('asc_bulk_edit_artwork', 'asc_bulk_edit_nonce'); ?>
             <table class="form-table" role="presentation">
                 <tr>
-                    <th scope="row"><?php esc_html_e('Products', 'art-storefront-customizer-main'); ?></th>
+                    <th scope="row"><?php esc_html_e('Products', 'art-storefront-customizer'); ?></th>
                     <td>
                         <select name="product_ids[]" multiple size="5" style="min-width: 300px;">
                             <?php foreach ($products as $product) : ?>
                                 <option value="<?php echo esc_attr($product->ID); ?>"><?php echo esc_html($product->post_title); ?></option>
                             <?php endforeach; ?>
                         </select>
-                        <p class="description"><?php esc_html_e('Hold Ctrl/Command to select multiple products.', 'art-storefront-customizer-main'); ?></p>
+                        <p class="description"><?php esc_html_e('Hold Ctrl/Command to select multiple products.', 'art-storefront-customizer'); ?></p>
                     </td>
                 </tr>
                 <tr>
-                    <th scope="row"><label for="asc_medium"><?php esc_html_e('Medium', 'art-storefront-customizer-main'); ?></label></th>
+                    <th scope="row"><label for="asc_medium"><?php esc_html_e('Medium', 'art-storefront-customizer'); ?></label></th>
                     <td><input type="text" name="medium" id="asc_medium" class="regular-text" /></td>
                 </tr>
                 <tr>
-                    <th scope="row"><label for="asc_year_created"><?php esc_html_e('Year Created', 'art-storefront-customizer-main'); ?></label></th>
+                    <th scope="row"><label for="asc_year_created"><?php esc_html_e('Year Created', 'art-storefront-customizer'); ?></label></th>
                     <td><input type="number" name="year_created" id="asc_year_created" class="small-text" /></td>
                 </tr>
             </table>
-            <?php submit_button(__('Update Artworks', 'art-storefront-customizer-main')); ?>
+            <?php submit_button(__('Update Artworks', 'art-storefront-customizer')); ?>
         </form>
     </div>
     <?php
@@ -104,7 +104,7 @@ function asc_add_convert_row_action($actions, $post) {
         'asc_convert_' . $post->ID
     );
 
-    $actions['asc_convert_to_artwork'] = '<a href="' . esc_url($url) . '">' . esc_html__('Convert to Artwork', 'art-storefront-customizer-main') . '</a>';
+    $actions['asc_convert_to_artwork'] = '<a href="' . esc_url($url) . '">' . esc_html__('Convert to Artwork', 'art-storefront-customizer') . '</a>';
 
     return $actions;
 }
@@ -117,7 +117,7 @@ function asc_handle_convert_to_artwork() {
     $post_id = intval($_GET['post_id'] ?? 0);
 
     if (!$post_id || !current_user_can('edit_post', $post_id)) {
-        wp_die(__('Invalid request.', 'art-storefront-customizer-main'));
+        wp_die(__('Invalid request.', 'art-storefront-customizer'));
     }
 
     check_admin_referer('asc_convert_' . $post_id);
