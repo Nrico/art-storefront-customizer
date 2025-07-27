@@ -16,7 +16,7 @@ function asc_display_product_badges() {
     $badges = array();
 
     if (!$product->is_in_stock()) {
-        $badges[] = __('🟥 Collected', 'art-storefront-customizer');
+        $badges[] = __('🔴 Collected', 'art-storefront-customizer');
     }
 
     $certificate = get_post_meta($product->get_id(), '_asc_certificate_of_authenticity', true);

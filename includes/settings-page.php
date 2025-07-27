@@ -10,7 +10,7 @@ function asc_settings_init() {
     $defaults = array(
         'enable_collector_mode'       => 0,
         'add_to_cart_label'           => 'Collect Now',
-        'out_of_stock_label'          => 'Collected 🟥',
+        'out_of_stock_label'          => 'Collected 🔴',
         'enable_framing_options'      => 0,
         'enable_edition_print_fields' => 0,
         'display_shipping_badge'      => 1,
@@ -125,7 +125,7 @@ function asc_sanitize_settings($input) {
 
     $output['enable_collector_mode'] = isset($input['enable_collector_mode']) ? 1 : 0;
     $output['add_to_cart_label'] = isset($input['add_to_cart_label']) ? sanitize_text_field($input['add_to_cart_label']) : 'Collect Now';
-    $output['out_of_stock_label'] = isset($input['out_of_stock_label']) ? sanitize_text_field($input['out_of_stock_label']) : 'Collected 🟥';
+    $output['out_of_stock_label'] = isset($input['out_of_stock_label']) ? sanitize_text_field($input['out_of_stock_label']) : 'Collected 🔴';
     $output['enable_framing_options'] = isset($input['enable_framing_options']) ? 1 : 0;
     $output['enable_edition_print_fields'] = isset($input['enable_edition_print_fields']) ? 1 : 0;
     $output['display_shipping_badge'] = isset($input['display_shipping_badge']) ? 1 : 0;
@@ -143,7 +143,7 @@ function asc_get_settings() {
     $defaults = array(
         'enable_collector_mode'      => 0,
         'add_to_cart_label'          => 'Collect Now',
-        'out_of_stock_label'         => 'Collected 🟥',
+        'out_of_stock_label'         => 'Collected 🔴',
         'enable_framing_options'     => 0,
         'enable_edition_print_fields' => 0,
         'display_shipping_badge'      => 1,

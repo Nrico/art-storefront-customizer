@@ -15,11 +15,11 @@ msgid "Collect Now"
 msgstr ""
 
 #: placeholder
-msgid "Collected 🟥"
+msgid "Collected 🔴"
 msgstr ""
 
 #: includes/badges.php
-msgid "🟥 Collected"
+msgid "🔴 Collected"
 msgstr ""
 
 #: placeholder
