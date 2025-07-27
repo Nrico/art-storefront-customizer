@@ -6,7 +6,7 @@ if (!defined('ABSPATH')) {
 function asc_add_artwork_details_meta_box() {
     add_meta_box(
         'asc_artwork_details',
-        __('Artwork Details', 'art-storefront-customizer-main'),
+        __('Artwork Details', 'art-storefront-customizer'),
         'asc_render_artwork_details_meta_box',
         'product',
         'normal',
@@ -20,7 +20,7 @@ function asc_add_framing_options_meta_box() {
     if (!empty($settings['enable_framing_options'])) {
         add_meta_box(
             'asc_framing_options',
-            __('Framing Options', 'art-storefront-customizer-main'),
+            __('Framing Options', 'art-storefront-customizer'),
             'asc_render_framing_options_meta_box',
             'product',
             'side',
@@ -35,7 +35,7 @@ function asc_add_edition_info_meta_box() {
     if (!empty($settings['enable_edition_print_fields'])) {
         add_meta_box(
             'asc_edition_info',
-            __('Edition Information', 'art-storefront-customizer-main'),
+            __('Edition Information', 'art-storefront-customizer'),
             'asc_render_edition_info_meta_box',
             'product',
             'side',
@@ -57,42 +57,42 @@ function asc_render_artwork_details_meta_box($post) {
     $shipping   = get_post_meta($post->ID, '_asc_shipping_format', true);
     ?>
     <p>
-        <label for="asc_medium"><?php esc_html_e('Medium', 'art-storefront-customizer-main'); ?></label><br />
+        <label for="asc_medium"><?php esc_html_e('Medium', 'art-storefront-customizer'); ?></label><br />
         <input type="text" name="asc_medium" id="asc_medium" value="<?php echo esc_attr($medium); ?>" class="widefat" />
     </p>
     <p>
-        <label for="asc_year_created"><?php esc_html_e('Year Created', 'art-storefront-customizer-main'); ?></label><br />
+        <label for="asc_year_created"><?php esc_html_e('Year Created', 'art-storefront-customizer'); ?></label><br />
         <input type="number" name="asc_year_created" id="asc_year_created" value="<?php echo esc_attr($year); ?>" class="small-text" />
     </p>
     <p>
-        <label for="asc_dimensions"><?php esc_html_e('Dimensions (W × H × D)', 'art-storefront-customizer-main'); ?></label><br />
+        <label for="asc_dimensions"><?php esc_html_e('Dimensions (W × H × D)', 'art-storefront-customizer'); ?></label><br />
         <input type="text" name="asc_dimensions" id="asc_dimensions" value="<?php echo esc_attr($dimensions); ?>" class="widefat" />
     </p>
     <p>
-        <label for="asc_rarity"><?php esc_html_e('Rarity', 'art-storefront-customizer-main'); ?></label><br />
+        <label for="asc_rarity"><?php esc_html_e('Rarity', 'art-storefront-customizer'); ?></label><br />
         <select name="asc_rarity" id="asc_rarity">
-            <option value="one-of-a-kind" <?php selected($rarity, 'one-of-a-kind'); ?>><?php esc_html_e('One-of-a-kind', 'art-storefront-customizer-main'); ?></option>
-            <option value="limited-edition" <?php selected($rarity, 'limited-edition'); ?>><?php esc_html_e('Limited Edition', 'art-storefront-customizer-main'); ?></option>
-            <option value="open-edition" <?php selected($rarity, 'open-edition'); ?>><?php esc_html_e('Open Edition', 'art-storefront-customizer-main'); ?></option>
+            <option value="one-of-a-kind" <?php selected($rarity, 'one-of-a-kind'); ?>><?php esc_html_e('One-of-a-kind', 'art-storefront-customizer'); ?></option>
+            <option value="limited-edition" <?php selected($rarity, 'limited-edition'); ?>><?php esc_html_e('Limited Edition', 'art-storefront-customizer'); ?></option>
+            <option value="open-edition" <?php selected($rarity, 'open-edition'); ?>><?php esc_html_e('Open Edition', 'art-storefront-customizer'); ?></option>
         </select>
     </p>
     <p>
-        <label for="asc_framed"><?php esc_html_e('Framed', 'art-storefront-customizer-main'); ?></label><br />
+        <label for="asc_framed"><?php esc_html_e('Framed', 'art-storefront-customizer'); ?></label><br />
         <input type="text" name="asc_framed" id="asc_framed" value="<?php echo esc_attr($framed); ?>" class="widefat" />
     </p>
     <p>
         <label for="asc_certificate_of_authenticity">
             <input type="checkbox" name="asc_certificate_of_authenticity" id="asc_certificate_of_authenticity" value="1" <?php checked($coa, '1'); ?> />
-            <?php esc_html_e('Certificate of Authenticity', 'art-storefront-customizer-main'); ?>
+            <?php esc_html_e('Certificate of Authenticity', 'art-storefront-customizer'); ?>
         </label>
     </p>
     <p>
-        <label for="asc_shipping_format"><?php esc_html_e('Shipping Format', 'art-storefront-customizer-main'); ?></label><br />
+        <label for="asc_shipping_format"><?php esc_html_e('Shipping Format', 'art-storefront-customizer'); ?></label><br />
         <select name="asc_shipping_format" id="asc_shipping_format">
-            <option value="rolled" <?php selected($shipping, 'rolled'); ?>><?php esc_html_e('Rolled', 'art-storefront-customizer-main'); ?></option>
-            <option value="crated" <?php selected($shipping, 'crated'); ?>><?php esc_html_e('Crated', 'art-storefront-customizer-main'); ?></option>
-            <option value="flat" <?php selected($shipping, 'flat'); ?>><?php esc_html_e('Flat', 'art-storefront-customizer-main'); ?></option>
-            <option value="other" <?php selected($shipping, 'other'); ?>><?php esc_html_e('Other', 'art-storefront-customizer-main'); ?></option>
+            <option value="rolled" <?php selected($shipping, 'rolled'); ?>><?php esc_html_e('Rolled', 'art-storefront-customizer'); ?></option>
+            <option value="crated" <?php selected($shipping, 'crated'); ?>><?php esc_html_e('Crated', 'art-storefront-customizer'); ?></option>
+            <option value="flat" <?php selected($shipping, 'flat'); ?>><?php esc_html_e('Flat', 'art-storefront-customizer'); ?></option>
+            <option value="other" <?php selected($shipping, 'other'); ?>><?php esc_html_e('Other', 'art-storefront-customizer'); ?></option>
         </select>
     </p>
     <?php
@@ -103,7 +103,7 @@ function asc_render_framing_options_meta_box($post) {
     $option = get_post_meta($post->ID, '_asc_frame_option', true);
     ?>
     <p>
-        <label for="asc_frame_option"><?php esc_html_e('Frame Option', 'art-storefront-customizer-main'); ?></label><br />
+        <label for="asc_frame_option"><?php esc_html_e('Frame Option', 'art-storefront-customizer'); ?></label><br />
         <input type="text" name="asc_frame_option" id="asc_frame_option" value="<?php echo esc_attr($option); ?>" class="widefat" />
     </p>
     <?php
@@ -115,11 +115,11 @@ function asc_render_edition_info_meta_box($post) {
     $size   = get_post_meta($post->ID, '_asc_edition_size', true);
     ?>
     <p>
-        <label for="asc_edition_number"><?php esc_html_e('Edition Number', 'art-storefront-customizer-main'); ?></label><br />
+        <label for="asc_edition_number"><?php esc_html_e('Edition Number', 'art-storefront-customizer'); ?></label><br />
         <input type="text" name="asc_edition_number" id="asc_edition_number" value="<?php echo esc_attr($number); ?>" class="small-text" />
     </p>
     <p>
-        <label for="asc_edition_size"><?php esc_html_e('Edition Size', 'art-storefront-customizer-main'); ?></label><br />
+        <label for="asc_edition_size"><?php esc_html_e('Edition Size', 'art-storefront-customizer'); ?></label><br />
         <input type="text" name="asc_edition_size" id="asc_edition_size" value="<?php echo esc_attr($size); ?>" class="small-text" />
     </p>
     <?php

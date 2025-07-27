@@ -8,15 +8,15 @@ if (!defined('ABSPATH')) {
  */
 function asc_register_artist_post_type() {
     $labels = array(
-        'name'               => __('Artists', 'art-storefront-customizer-main'),
-        'singular_name'      => __('Artist', 'art-storefront-customizer-main'),
-        'add_new_item'       => __('Add New Artist', 'art-storefront-customizer-main'),
-        'edit_item'          => __('Edit Artist', 'art-storefront-customizer-main'),
-        'new_item'           => __('New Artist', 'art-storefront-customizer-main'),
-        'view_item'          => __('View Artist', 'art-storefront-customizer-main'),
-        'search_items'       => __('Search Artists', 'art-storefront-customizer-main'),
-        'not_found'          => __('No artists found', 'art-storefront-customizer-main'),
-        'all_items'          => __('All Artists', 'art-storefront-customizer-main'),
+        'name'               => __('Artists', 'art-storefront-customizer'),
+        'singular_name'      => __('Artist', 'art-storefront-customizer'),
+        'add_new_item'       => __('Add New Artist', 'art-storefront-customizer'),
+        'edit_item'          => __('Edit Artist', 'art-storefront-customizer'),
+        'new_item'           => __('New Artist', 'art-storefront-customizer'),
+        'view_item'          => __('View Artist', 'art-storefront-customizer'),
+        'search_items'       => __('Search Artists', 'art-storefront-customizer'),
+        'not_found'          => __('No artists found', 'art-storefront-customizer'),
+        'all_items'          => __('All Artists', 'art-storefront-customizer'),
     );
 
     register_post_type(
@@ -39,7 +39,7 @@ add_action('init', 'asc_register_artist_post_type');
 function asc_add_artist_meta_box() {
     add_meta_box(
         'asc_artist_details',
-        __('Artist Details', 'art-storefront-customizer-main'),
+        __('Artist Details', 'art-storefront-customizer'),
         'asc_render_artist_meta_box',
         'artist',
         'normal',
@@ -60,11 +60,11 @@ function asc_render_artist_meta_box($post) {
     $website = get_post_meta($post->ID, '_asc_artist_website', true);
     ?>
     <p>
-        <label for="asc_artist_website"><?php esc_html_e('Website', 'art-storefront-customizer-main'); ?></label><br />
+        <label for="asc_artist_website"><?php esc_html_e('Website', 'art-storefront-customizer'); ?></label><br />
         <input type="text" name="asc_artist_website" id="asc_artist_website" value="<?php echo esc_attr($website); ?>" class="widefat" />
     </p>
     <p>
-        <label for="asc_artist_bio"><?php esc_html_e('Biography', 'art-storefront-customizer-main'); ?></label>
+        <label for="asc_artist_bio"><?php esc_html_e('Biography', 'art-storefront-customizer'); ?></label>
     </p>
     <?php
     wp_editor(
@@ -114,7 +114,7 @@ add_action('save_post_artist', 'asc_save_artist_meta_box');
 function asc_add_product_artist_meta_box() {
     add_meta_box(
         'asc_product_artist',
-        __('Associated Artist', 'art-storefront-customizer-main'),
+        __('Associated Artist', 'art-storefront-customizer'),
         'asc_render_product_artist_meta_box',
         'product',
         'side',
@@ -142,7 +142,7 @@ function asc_render_product_artist_meta_box($post) {
     );
 
     echo '<select name="asc_artist_id" id="asc_artist_id" style="width:100%;">';
-    echo '<option value="">' . esc_html__('— None —', 'art-storefront-customizer-main') . '</option>';
+    echo '<option value="">' . esc_html__('— None —', 'art-storefront-customizer') . '</option>';
     foreach ($artists as $artist) {
         echo '<option value="' . esc_attr($artist->ID) . '" ' . selected($current, $artist->ID, false) . '>' . esc_html($artist->post_title) . '</option>';
     }

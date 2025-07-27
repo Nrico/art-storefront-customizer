@@ -23,7 +23,7 @@ function asc_settings_init() {
 
     add_settings_field(
         'enable_collector_mode',
-        __('Enable Collector Mode', 'art-storefront-customizer-main'),
+        __('Enable Collector Mode', 'art-storefront-customizer'),
         'asc_render_checkbox_enable_collector_mode',
         'asc_settings',
         'asc_main_section'
@@ -31,7 +31,7 @@ function asc_settings_init() {
 
     add_settings_field(
         'add_to_cart_label',
-        __('Add to Cart Label', 'art-storefront-customizer-main'),
+        __('Add to Cart Label', 'art-storefront-customizer'),
         'asc_render_add_to_cart_label',
         'asc_settings',
         'asc_main_section'
@@ -39,7 +39,7 @@ function asc_settings_init() {
 
     add_settings_field(
         'out_of_stock_label',
-        __('Out of Stock Label', 'art-storefront-customizer-main'),
+        __('Out of Stock Label', 'art-storefront-customizer'),
         'asc_render_out_of_stock_label',
         'asc_settings',
         'asc_main_section'
@@ -47,7 +47,7 @@ function asc_settings_init() {
 
     add_settings_field(
         'enable_framing_options',
-        __('Enable Framing Options', 'art-storefront-customizer-main'),
+        __('Enable Framing Options', 'art-storefront-customizer'),
         'asc_render_checkbox_enable_framing_options',
         'asc_settings',
         'asc_main_section'
@@ -55,7 +55,7 @@ function asc_settings_init() {
 
     add_settings_field(
         'enable_edition_print_fields',
-        __('Enable Edition Print Fields', 'art-storefront-customizer-main'),
+        __('Enable Edition Print Fields', 'art-storefront-customizer'),
         'asc_render_checkbox_enable_edition_print_fields',
         'asc_settings',
         'asc_main_section'
@@ -63,7 +63,7 @@ function asc_settings_init() {
 
     add_settings_field(
         'display_shipping_badge',
-        __('Display Shipping Badge', 'art-storefront-customizer-main'),
+        __('Display Shipping Badge', 'art-storefront-customizer'),
         'asc_render_checkbox_display_shipping_badge',
         'asc_settings',
         'asc_main_section'
@@ -71,7 +71,7 @@ function asc_settings_init() {
 
     add_settings_field(
         'display_guarantee_badge',
-        __('Display Guarantee Badge', 'art-storefront-customizer-main'),
+        __('Display Guarantee Badge', 'art-storefront-customizer'),
         'asc_render_checkbox_display_guarantee_badge',
         'asc_settings',
         'asc_main_section'
@@ -84,8 +84,8 @@ add_action('admin_init', 'asc_settings_init');
  */
 function asc_add_settings_page() {
     add_options_page(
-        __('Art Storefront Settings', 'art-storefront-customizer-main'),
-        __('Art Storefront', 'art-storefront-customizer-main'),
+        __('Art Storefront Settings', 'art-storefront-customizer'),
+        __('Art Storefront', 'art-storefront-customizer'),
         'manage_options',
         'asc_settings',
         'asc_render_settings_page'
@@ -102,7 +102,7 @@ function asc_render_settings_page() {
     }
     ?>
     <div class="wrap">
-        <h1><?php esc_html_e('Art Storefront Settings', 'art-storefront-customizer-main'); ?></h1>
+        <h1><?php esc_html_e('Art Storefront Settings', 'art-storefront-customizer'); ?></h1>
         <form action="options.php" method="post">
             <?php
             settings_fields('asc_settings_group'); // Adds nonce and option_page fields
