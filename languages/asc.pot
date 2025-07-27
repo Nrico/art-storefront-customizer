@@ -106,7 +106,7 @@ msgid "Art Storefront"
 msgstr ""
 
 #: includes/badges.php
-msgid "🟥 Collected"
+msgid "🔴 Collected"
 msgstr ""
 
 #: includes/badges.php
