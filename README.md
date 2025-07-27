@@ -8,3 +8,5 @@ The plugin adds an **Art Storefront** submenu under WordPress Settings. Here you
 - Out of Stock Label
 - Enable Framing Options
 - Enable Edition Print Fields
+- Display Shipping Badge
+- Display Guarantee Badge
