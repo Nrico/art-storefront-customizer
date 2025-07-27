@@ -18,6 +18,8 @@ function asc_output_artwork_details() {
 
     $post_id = $product->get_id();
 
+    $settings = asc_get_settings();
+
     $medium     = get_post_meta($post_id, '_asc_medium', true);
     $year       = get_post_meta($post_id, '_asc_year_created', true);
     $dimensions = get_post_meta($post_id, '_asc_dimensions', true);
@@ -25,6 +27,9 @@ function asc_output_artwork_details() {
     $framed     = get_post_meta($post_id, '_asc_framed', true);
     $coa        = get_post_meta($post_id, '_asc_certificate_of_authenticity', true);
     $shipping   = get_post_meta($post_id, '_asc_shipping_format', true);
+    $frame      = get_post_meta($post_id, '_asc_frame_option', true);
+    $edition_no = get_post_meta($post_id, '_asc_edition_number', true);
+    $edition_sz = get_post_meta($post_id, '_asc_edition_size', true);
 
     $items = array();
 
@@ -43,11 +48,18 @@ function asc_output_artwork_details() {
     if ($framed) {
         $items[] = sprintf('<li><strong>%s:</strong> %s</li>', esc_html__('Framed', 'art-storefront-customizer'), esc_html($framed));
     }
+    if (!empty($settings['enable_framing_options']) && $frame) {
+        $items[] = sprintf('<li><strong>%s:</strong> %s</li>', esc_html__('Frame Option', 'art-storefront-customizer'), esc_html($frame));
+    }
     if ($coa) {
         $items[] = sprintf('<li><strong>%s:</strong> %s</li>', esc_html__('Certificate of Authenticity', 'art-storefront-customizer'), esc_html__('Included', 'art-storefront-customizer'));
     }
     if ($shipping) {
         $items[] = sprintf('<li><strong>%s:</strong> %s</li>', esc_html__('Shipping Format', 'art-storefront-customizer'), esc_html($shipping));
+    }
+    if (!empty($settings['enable_edition_print_fields']) && ($edition_no || $edition_sz)) {
+        $value = trim($edition_no . ($edition_sz ? ' / ' . $edition_sz : ''));
+        $items[] = sprintf('<li><strong>%s:</strong> %s</li>', esc_html__('Edition', 'art-storefront-customizer'), esc_html($value));
     }
 
     if (!empty($items)) {
