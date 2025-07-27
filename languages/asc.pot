@@ -1,1 +1,106 @@
-# Translation template
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-07-27 05:36+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: includes/meta-boxes.php:9
+msgid "Artwork Details"
+msgstr ""
+
+#: includes/meta-boxes.php:30
+msgid "Medium"
+msgstr ""
+
+#: includes/meta-boxes.php:34
+msgid "Year Created"
+msgstr ""
+
+#: includes/meta-boxes.php:38
+msgid "Dimensions (W × H × D)"
+msgstr ""
+
+#: includes/meta-boxes.php:42
+msgid "Rarity"
+msgstr ""
+
+#: includes/meta-boxes.php:44
+msgid "One-of-a-kind"
+msgstr ""
+
+#: includes/meta-boxes.php:45
+msgid "Limited Edition"
+msgstr ""
+
+#: includes/meta-boxes.php:46
+msgid "Open Edition"
+msgstr ""
+
+#: includes/meta-boxes.php:50
+msgid "Framed"
+msgstr ""
+
+#: includes/meta-boxes.php:56
+msgid "Certificate of Authenticity"
+msgstr ""
+
+#: includes/meta-boxes.php:60
+msgid "Shipping Format"
+msgstr ""
+
+#: includes/meta-boxes.php:62
+msgid "Rolled"
+msgstr ""
+
+#: includes/meta-boxes.php:63
+msgid "Crated"
+msgstr ""
+
+#: includes/meta-boxes.php:64
+msgid "Flat"
+msgstr ""
+
+#: includes/meta-boxes.php:65
+msgid "Other"
+msgstr ""
+
+#: includes/settings-page.php:24
+msgid "Enable Collector Mode"
+msgstr ""
+
+#: includes/settings-page.php:32
+msgid "Add to Cart Label"
+msgstr ""
+
+#: includes/settings-page.php:40
+msgid "Out of Stock Label"
+msgstr ""
+
+#: includes/settings-page.php:48
+msgid "Enable Framing Options"
+msgstr ""
+
+#: includes/settings-page.php:56
+msgid "Enable Edition Print Fields"
+msgstr ""
+
+#: includes/settings-page.php:69
+msgid "Art Storefront Settings"
+msgstr ""
+
+#: includes/settings-page.php:70
+msgid "Art Storefront"
+msgstr ""
