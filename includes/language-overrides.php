@@ -10,7 +10,12 @@ add_filter('gettext', 'asc_override_woocommerce_labels', 20, 3);
 function asc_override_woocommerce_labels($translated_text, $text, $domain) {
     // Only override WooCommerce strings
     if ($domain === 'woocommerce') {
-        $settings = get_option('asc_settings');
+        $settings = asc_get_settings();
+
+        // Only modify labels when collector mode is enabled
+        if (empty($settings['enable_collector_mode'])) {
+            return $translated_text;
+        }
 
         // Custom "Add to cart" replacement
         if ($text === 'Add to cart' && !empty($settings['add_to_cart_label'])) {

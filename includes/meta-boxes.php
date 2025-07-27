@@ -15,6 +15,36 @@ function asc_add_artwork_details_meta_box() {
 }
 add_action('add_meta_boxes', 'asc_add_artwork_details_meta_box');
 
+function asc_add_framing_options_meta_box() {
+    $settings = asc_get_settings();
+    if (!empty($settings['enable_framing_options'])) {
+        add_meta_box(
+            'asc_framing_options',
+            __('Framing Options', 'art-storefront-customizer'),
+            'asc_render_framing_options_meta_box',
+            'product',
+            'side',
+            'default'
+        );
+    }
+}
+add_action('add_meta_boxes', 'asc_add_framing_options_meta_box');
+
+function asc_add_edition_info_meta_box() {
+    $settings = asc_get_settings();
+    if (!empty($settings['enable_edition_print_fields'])) {
+        add_meta_box(
+            'asc_edition_info',
+            __('Edition Information', 'art-storefront-customizer'),
+            'asc_render_edition_info_meta_box',
+            'product',
+            'side',
+            'default'
+        );
+    }
+}
+add_action('add_meta_boxes', 'asc_add_edition_info_meta_box');
+
 function asc_render_artwork_details_meta_box($post) {
     wp_nonce_field('asc_save_artwork_details', 'asc_artwork_details_nonce');
 
@@ -68,6 +98,33 @@ function asc_render_artwork_details_meta_box($post) {
     <?php
 }
 
+function asc_render_framing_options_meta_box($post) {
+    wp_nonce_field('asc_save_framing_options', 'asc_framing_options_nonce');
+    $option = get_post_meta($post->ID, '_asc_frame_option', true);
+    ?>
+    <p>
+        <label for="asc_frame_option"><?php _e('Frame Option', 'art-storefront-customizer'); ?></label><br />
+        <input type="text" name="asc_frame_option" id="asc_frame_option" value="<?php echo esc_attr($option); ?>" class="widefat" />
+    </p>
+    <?php
+}
+
+function asc_render_edition_info_meta_box($post) {
+    wp_nonce_field('asc_save_edition_info', 'asc_edition_info_nonce');
+    $number = get_post_meta($post->ID, '_asc_edition_number', true);
+    $size   = get_post_meta($post->ID, '_asc_edition_size', true);
+    ?>
+    <p>
+        <label for="asc_edition_number"><?php _e('Edition Number', 'art-storefront-customizer'); ?></label><br />
+        <input type="text" name="asc_edition_number" id="asc_edition_number" value="<?php echo esc_attr($number); ?>" class="small-text" />
+    </p>
+    <p>
+        <label for="asc_edition_size"><?php _e('Edition Size', 'art-storefront-customizer'); ?></label><br />
+        <input type="text" name="asc_edition_size" id="asc_edition_size" value="<?php echo esc_attr($size); ?>" class="small-text" />
+    </p>
+    <?php
+}
+
 function asc_save_artwork_details_meta_box($post_id) {
     if (!isset($_POST['asc_artwork_details_nonce']) || !wp_verify_nonce($_POST['asc_artwork_details_nonce'], 'asc_save_artwork_details')) {
         return;
@@ -100,3 +157,60 @@ function asc_save_artwork_details_meta_box($post_id) {
     }
 }
 add_action('save_post_product', 'asc_save_artwork_details_meta_box');
+
+function asc_save_framing_options_meta_box($post_id) {
+    $settings = asc_get_settings();
+    if (empty($settings['enable_framing_options'])) {
+        return;
+    }
+
+    if (!isset($_POST['asc_framing_options_nonce']) || !wp_verify_nonce($_POST['asc_framing_options_nonce'], 'asc_save_framing_options')) {
+        return;
+    }
+
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+        return;
+    }
+
+    if ('product' !== ($_POST['post_type'] ?? '')) {
+        return;
+    }
+
+    if (!current_user_can('edit_product', $post_id)) {
+        return;
+    }
+
+    $value = sanitize_text_field($_POST['asc_frame_option'] ?? '');
+    update_post_meta($post_id, '_asc_frame_option', $value);
+}
+add_action('save_post_product', 'asc_save_framing_options_meta_box');
+
+function asc_save_edition_info_meta_box($post_id) {
+    $settings = asc_get_settings();
+    if (empty($settings['enable_edition_print_fields'])) {
+        return;
+    }
+
+    if (!isset($_POST['asc_edition_info_nonce']) || !wp_verify_nonce($_POST['asc_edition_info_nonce'], 'asc_save_edition_info')) {
+        return;
+    }
+
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+        return;
+    }
+
+    if ('product' !== ($_POST['post_type'] ?? '')) {
+        return;
+    }
+
+    if (!current_user_can('edit_product', $post_id)) {
+        return;
+    }
+
+    $number = sanitize_text_field($_POST['asc_edition_number'] ?? '');
+    $size   = sanitize_text_field($_POST['asc_edition_size'] ?? '');
+
+    update_post_meta($post_id, '_asc_edition_number', $number);
+    update_post_meta($post_id, '_asc_edition_size', $size);
+}
+add_action('save_post_product', 'asc_save_edition_info_meta_box');
