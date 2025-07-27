@@ -1,3 +1,39 @@
 /*
 Theme Name: Art Storefront Customizer
 */
+
+.asc-badges {
+    margin-top: 1em;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5em;
+}
+
+.asc-badge {
+    background: #eee;
+    border-radius: 4px;
+    padding: 4px 8px;
+    font-size: 0.9em;
+}
+
+.artwork-details {
+    margin-top: 2em;
+    padding: 1em;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+}
+
+.artwork-details h3 {
+    margin-top: 0;
+    font-size: 1.2em;
+}
+
+.artwork-details ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.artwork-details li {
+    margin: 0.25em 0;
+}
+
