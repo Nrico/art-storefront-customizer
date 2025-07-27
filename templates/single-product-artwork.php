@@ -51,22 +51,22 @@ global $product;
 <section class="product-details-dimensions">
     <h2>Details &amp; Dimensions</h2>
     <ul class="artwork-attributes">
-        <?php if ( $medium = get_post_meta( get_the_ID(), 'medium', true ) ) : ?>
+        <?php if ( $medium = get_post_meta( get_the_ID(), '_asc_medium', true ) ) : ?>
             <li><strong>Medium:</strong> <?php echo esc_html( $medium ); ?></li>
         <?php endif; ?>
-        <?php if ( $year = get_post_meta( get_the_ID(), 'year', true ) ) : ?>
+        <?php if ( $year = get_post_meta( get_the_ID(), '_asc_year_created', true ) ) : ?>
             <li><strong>Year:</strong> <?php echo esc_html( $year ); ?></li>
         <?php endif; ?>
-        <?php if ( $dimensions = get_post_meta( get_the_ID(), 'dimensions', true ) ) : ?>
+        <?php if ( $dimensions = get_post_meta( get_the_ID(), '_asc_dimensions', true ) ) : ?>
             <li><strong>Dimensions:</strong> <?php echo esc_html( $dimensions ); ?></li>
         <?php endif; ?>
-        <?php if ( $rarity = get_post_meta( get_the_ID(), 'rarity', true ) ) : ?>
+        <?php if ( $rarity = get_post_meta( get_the_ID(), '_asc_rarity', true ) ) : ?>
             <li><strong>Rarity:</strong> <?php echo esc_html( $rarity ); ?></li>
         <?php endif; ?>
-        <?php if ( $framed = get_post_meta( get_the_ID(), 'framed', true ) ) : ?>
+        <?php if ( $framed = get_post_meta( get_the_ID(), '_asc_framed', true ) ) : ?>
             <li><strong>Framed:</strong> <?php echo esc_html( $framed ); ?></li>
         <?php endif; ?>
-        <?php if ( $certificate = get_post_meta( get_the_ID(), 'certificate', true ) ) : ?>
+        <?php if ( $certificate = get_post_meta( get_the_ID(), '_asc_certificate_of_authenticity', true ) ) : ?>
             <li><strong>Certificate:</strong> <?php echo esc_html( $certificate ); ?></li>
         <?php endif; ?>
     </ul>
