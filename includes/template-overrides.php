@@ -13,9 +13,12 @@ add_filter('woocommerce_locate_template', 'asc_override_product_template', 10, 3
  */
 function asc_override_product_template($template, $template_name, $template_path) {
     if ($template_name === 'single-product.php') {
-        $custom = plugin_dir_path(__FILE__) . '../templates/single-product-artwork.php';
-        if (file_exists($custom)) {
-            return $custom;
+        $settings = function_exists('asc_get_settings') ? asc_get_settings() : array();
+        if (!empty($settings['enable_gallery_layout'])) {
+            $custom = plugin_dir_path(__FILE__) . '../templates/single-product-artwork.php';
+            if (file_exists($custom)) {
+                return $custom;
+            }
         }
     }
     return $template;

@@ -13,6 +13,7 @@ function asc_settings_init() {
         'out_of_stock_label'         => 'Collected 🟥',
         'enable_framing_options'     => 0,
         'enable_edition_print_fields'=> 0,
+        'enable_gallery_layout'      => 0,
     );
 
     register_setting('asc_settings_group', 'asc_settings', 'asc_sanitize_settings');
@@ -55,6 +56,14 @@ function asc_settings_init() {
         'enable_edition_print_fields',
         __('Enable Edition Print Fields', 'art-storefront-customizer'),
         'asc_render_checkbox_enable_edition_print_fields',
+        'asc_settings',
+        'asc_main_section'
+    );
+
+    add_settings_field(
+        'enable_gallery_layout',
+        __('Enable Gallery Layout', 'art-storefront-customizer'),
+        'asc_render_checkbox_enable_gallery_layout',
         'asc_settings',
         'asc_main_section'
     );
@@ -110,6 +119,7 @@ function asc_sanitize_settings($input) {
     $output['out_of_stock_label'] = isset($input['out_of_stock_label']) ? sanitize_text_field($input['out_of_stock_label']) : 'Collected 🟥';
     $output['enable_framing_options'] = isset($input['enable_framing_options']) ? 1 : 0;
     $output['enable_edition_print_fields'] = isset($input['enable_edition_print_fields']) ? 1 : 0;
+    $output['enable_gallery_layout'] = isset($input['enable_gallery_layout']) ? 1 : 0;
 
     return $output;
 }
@@ -126,6 +136,7 @@ function asc_get_settings() {
         'out_of_stock_label'         => 'Collected 🟥',
         'enable_framing_options'     => 0,
         'enable_edition_print_fields'=> 0,
+        'enable_gallery_layout'      => 0,
     );
     $options = get_option('asc_settings', array());
     return wp_parse_args($options, $defaults);
@@ -163,5 +174,12 @@ function asc_render_checkbox_enable_edition_print_fields() {
     $options = asc_get_settings();
     ?>
     <input type="checkbox" id="enable_edition_print_fields" name="asc_settings[enable_edition_print_fields]" value="1" <?php checked($options['enable_edition_print_fields'], 1); ?> />
+    <?php
+}
+
+function asc_render_checkbox_enable_gallery_layout() {
+    $options = asc_get_settings();
+    ?>
+    <input type="checkbox" id="enable_gallery_layout" name="asc_settings[enable_gallery_layout]" value="1" <?php checked($options['enable_gallery_layout'], 1); ?> />
     <?php
 }

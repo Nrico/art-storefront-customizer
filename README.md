@@ -8,3 +8,6 @@ The plugin adds an **Art Storefront** submenu under WordPress Settings. Here you
 - Out of Stock Label
 - Enable Framing Options
 - Enable Edition Print Fields
+- Enable Gallery Layout
+
+To switch between the default and gallery layout, navigate to **Settings → Art Storefront** and toggle the **Enable Gallery Layout** option.
