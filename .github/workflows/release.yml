@@ -1,0 +1,43 @@
+name: Release Plugin
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.0'
+
+      - name: Zip plugin
+        run: |
+          plugin_slug="art-storefront-customizer"
+          zip -r "${plugin_slug}.zip" . -x '*.git*' -x '.github*' -x '*node_modules*'
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ github.ref_name }}
+          name: ${{ github.ref_name }}
+          files: art-storefront-customizer.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Deploy to WordPress.org
+        if: ${{ secrets.SVN_USERNAME != '' && secrets.SVN_PASSWORD != '' }}
+        uses: 10up/action-wordpress-plugin-deploy@stable
+        with:
+          plugin_slug: art-storefront-customizer
+          svn_username: ${{ secrets.SVN_USERNAME }}
+          svn_password: ${{ secrets.SVN_PASSWORD }}
+          build_dir: .
