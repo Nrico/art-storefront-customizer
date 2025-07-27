@@ -1,2 +1,5 @@
 # art-storefront-customizer
-WordDress Plugin for WooCommerce that creates a more Artist friendly environment
+WordPress Plugin for WooCommerce that creates a more artist friendly environment.
+
+## License
+This project is licensed under the [GNU General Public License v2.0 or later](LICENSE).
