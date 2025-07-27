@@ -21,6 +21,9 @@ require_once plugin_dir_path(__FILE__) . 'includes/admin-tools.php';
 require_once plugin_dir_path(__FILE__) . 'includes/settings-page.php';
 require_once plugin_dir_path(__FILE__) . 'includes/language-overrides.php';
 require_once plugin_dir_path(__FILE__) . 'includes/template-overrides.php';
+require_once plugin_dir_path(__FILE__) . 'uninstall.php';
+
+register_uninstall_hook(__FILE__, 'asc_customizer_uninstall');
 
 /**
  * Load plugin textdomain for translations.
