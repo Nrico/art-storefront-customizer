@@ -19,13 +19,21 @@ function asc_display_product_badges() {
         $badges[] = '🟥 Collected';
     }
 
-    $certificate = get_post_meta($product->get_id(), 'asc_certificate', true);
-    if ('yes' === $certificate) {
+    $certificate = get_post_meta($product->get_id(), '_asc_certificate_of_authenticity', true);
+    if ('1' === $certificate) {
         $badges[] = '✅ Certificate Included';
     }
 
-    $badges[] = '📦 Shipping Included';
-    $badges[] = '💯 14-Day Satisfaction Guarantee';
+    $settings = asc_get_settings();
+
+    $shipping_format = get_post_meta($product->get_id(), '_asc_shipping_format', true);
+    if (!empty($shipping_format) && !empty($settings['display_shipping_badge'])) {
+        $badges[] = '📦 Shipping Included';
+    }
+
+    if (!empty($settings['display_guarantee_badge'])) {
+        $badges[] = '💯 14-Day Satisfaction Guarantee';
+    }
 
     if (empty($badges)) {
         return;
@@ -37,4 +45,4 @@ function asc_display_product_badges() {
     }
     echo '</div>';
 }
-add_action('woocommerce_single_product_summary', 'asc_display_product_badges', 11);
+add_action('art_storefront_product_badges', 'asc_display_product_badges');
