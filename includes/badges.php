@@ -19,8 +19,8 @@ function asc_display_product_badges() {
         $badges[] = '🟥 Collected';
     }
 
-    $certificate = get_post_meta($product->get_id(), 'asc_certificate', true);
-    if ('yes' === $certificate) {
+    $certificate = get_post_meta($product->get_id(), '_asc_certificate_of_authenticity', true);
+    if ('1' === $certificate) {
         $badges[] = '✅ Certificate Included';
     }
 
