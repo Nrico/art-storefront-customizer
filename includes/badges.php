@@ -16,23 +16,23 @@ function asc_display_product_badges() {
     $badges = array();
 
     if (!$product->is_in_stock()) {
-        $badges[] = __('🔴 Collected', 'art-storefront-customizer');
+        $badges[] = __('🔴 Collected', 'art-storefront-customizer-main');
     }
 
     $certificate = get_post_meta($product->get_id(), '_asc_certificate_of_authenticity', true);
     if ('1' === $certificate) {
-        $badges[] = __('✅ Certificate Included', 'art-storefront-customizer');
+        $badges[] = __('✅ Certificate Included', 'art-storefront-customizer-main');
     }
 
     $settings = asc_get_settings();
 
     $shipping_format = get_post_meta($product->get_id(), '_asc_shipping_format', true);
     if (!empty($shipping_format) && !empty($settings['display_shipping_badge'])) {
-        $badges[] = __('📦 Shipping Included', 'art-storefront-customizer');
+        $badges[] = __('📦 Shipping Included', 'art-storefront-customizer-main');
     }
 
     if (!empty($settings['display_guarantee_badge'])) {
-        $badges[] = __('💯 14-Day Satisfaction Guarantee', 'art-storefront-customizer');
+        $badges[] = __('💯 14-Day Satisfaction Guarantee', 'art-storefront-customizer-main');
     }
 
     if (empty($badges)) {
