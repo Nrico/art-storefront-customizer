@@ -73,20 +73,47 @@ global $product;
 </section>
 
 <?php
-$artists = get_the_terms( get_the_ID(), 'associated_artist' );
-if ( $artists && ! is_wp_error( $artists ) ) :
-    foreach ( $artists as $artist ) :
-        $bio = term_description( $artist, 'associated_artist' );
-        if ( $bio ) :
-            ?>
-            <section class="artist-bio">
-                <h2><?php echo esc_html( $artist->name ); ?> - Artist Bio</h2>
-                <?php echo wp_kses_post( wpautop( $bio ) ); ?>
-            </section>
+$artist_id = get_post_meta( get_the_ID(), '_asc_artist_id', true );
+if ( $artist_id ) {
+    $artist = get_post( $artist_id );
+    if ( $artist && 'artist' === $artist->post_type ) {
+        $bio     = get_post_meta( $artist_id, '_asc_artist_bio', true );
+        if ( ! $bio ) {
+            $bio = $artist->post_content;
+        }
+        ?>
+        <section class="artist-bio">
+            <h2><?php echo esc_html( get_the_title( $artist ) ); ?> - Artist Bio</h2>
             <?php
-        endif;
-    endforeach;
-endif;
+            $image = get_the_post_thumbnail( $artist_id, 'medium', array( 'class' => 'artist-profile-image' ) );
+            if ( $image ) {
+                echo $image; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+            }
+            echo wp_kses_post( wpautop( $bio ) );
+            $website = get_post_meta( $artist_id, '_asc_artist_website', true );
+            if ( $website ) {
+                echo '<p><a href="' . esc_url( $website ) . '" target="_blank" rel="noopener">' . esc_html( $website ) . '</a></p>';
+            }
+            ?>
+        </section>
+        <?php
+    }
+} else {
+    $artists = get_the_terms( get_the_ID(), 'associated_artist' );
+    if ( $artists && ! is_wp_error( $artists ) ) :
+        foreach ( $artists as $artist ) :
+            $bio = term_description( $artist, 'associated_artist' );
+            if ( $bio ) :
+                ?>
+                <section class="artist-bio">
+                    <h2><?php echo esc_html( $artist->name ); ?> - Artist Bio</h2>
+                    <?php echo wp_kses_post( wpautop( $bio ) ); ?>
+                </section>
+                <?php
+            endif;
+        endforeach;
+    endif;
+}
 ?>
 
 <?php get_footer( 'shop' ); ?>
