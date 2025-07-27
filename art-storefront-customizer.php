@@ -3,6 +3,7 @@
  * Plugin Name: Art Storefront Customizer
  * Description: Artist-friendly customizations for WooCommerce.
  * Version: 0.1.0
+ * Requires: WooCommerce
  * Author: Your Name
  * License: GPLv2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
