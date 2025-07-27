@@ -21,3 +21,14 @@ require_once plugin_dir_path(__FILE__) . 'includes/admin-tools.php';
 require_once plugin_dir_path(__FILE__) . 'includes/settings-page.php';
 require_once plugin_dir_path(__FILE__) . 'includes/language-overrides.php';
 require_once plugin_dir_path(__FILE__) . 'includes/template-overrides.php';
+
+/**
+ * Enqueue plugin styles.
+ */
+function asc_enqueue_styles() {
+    wp_enqueue_style(
+        'art-storefront-customizer',
+        plugins_url('assets/style.css', __FILE__)
+    );
+}
+add_action('wp_enqueue_scripts', 'asc_enqueue_styles');
